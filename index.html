@@ -1,0 +1,1268 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>中国矿业大学（北京）专业硕士毕业论文答辩与学位申请知识库</title>
+    <style>
+        :root {
+            --primary-color: #1a5f7a;
+            --secondary-color: #57c5b6;
+            --accent-color: #159895;
+            --bg-color: #f8fafc;
+            --card-bg: #ffffff;
+            --text-color: #1e293b;
+            --text-secondary: #64748b;
+            --border-color: #e2e8f0;
+            --warning-color: #f59e0b;
+            --danger-color: #ef4444;
+            --success-color: #10b981;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', sans-serif;
+            background: var(--bg-color);
+            color: var(--text-color);
+            line-height: 1.6;
+        }
+
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        /* Header */
+        .header {
+            background: linear-gradient(135deg, var(--primary-color), var(--accent-color));
+            color: white;
+            padding: 40px 20px;
+            text-align: center;
+            border-radius: 16px;
+            margin-bottom: 30px;
+            box-shadow: 0 10px 40px rgba(26, 95, 122, 0.2);
+        }
+
+        .header h1 {
+            font-size: 2rem;
+            margin-bottom: 10px;
+        }
+
+        .header p {
+            opacity: 0.9;
+            font-size: 1rem;
+        }
+
+        /* Search Box */
+        .search-container {
+            margin-bottom: 30px;
+        }
+
+        .search-box {
+            width: 100%;
+            padding: 16px 24px;
+            font-size: 1rem;
+            border: 2px solid var(--border-color);
+            border-radius: 12px;
+            background: var(--card-bg);
+            transition: all 0.3s ease;
+        }
+
+        .search-box:focus {
+            outline: none;
+            border-color: var(--primary-color);
+            box-shadow: 0 0 0 4px rgba(26, 95, 122, 0.1);
+        }
+
+        /* Navigation Tabs */
+        .tabs {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin-bottom: 30px;
+        }
+
+        .tab {
+            padding: 12px 24px;
+            background: var(--card-bg);
+            border: 2px solid var(--border-color);
+            border-radius: 10px;
+            cursor: pointer;
+            font-size: 0.95rem;
+            font-weight: 500;
+            transition: all 0.3s ease;
+        }
+
+        .tab:hover {
+            border-color: var(--primary-color);
+            color: var(--primary-color);
+        }
+
+        .tab.active {
+            background: var(--primary-color);
+            border-color: var(--primary-color);
+            color: white;
+        }
+
+        /* Section */
+        .section {
+            display: none;
+        }
+
+        .section.active {
+            display: block;
+        }
+
+        /* Cards */
+        .card {
+            background: var(--card-bg);
+            border-radius: 12px;
+            padding: 24px;
+            margin-bottom: 20px;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+            border: 1px solid var(--border-color);
+        }
+
+        .card-header {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            margin-bottom: 16px;
+            padding-bottom: 12px;
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        .card-icon {
+            width: 40px;
+            height: 40px;
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 1.2rem;
+        }
+
+        .card-title {
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: var(--text-color);
+        }
+
+        .card-content {
+            color: var(--text-secondary);
+        }
+
+        /* Alert Boxes */
+        .alert {
+            padding: 16px 20px;
+            border-radius: 10px;
+            margin-bottom: 16px;
+            display: flex;
+            align-items: flex-start;
+            gap: 12px;
+        }
+
+        .alert-warning {
+            background: #fef3c7;
+            border-left: 4px solid var(--warning-color);
+            color: #92400e;
+        }
+
+        .alert-danger {
+            background: #fee2e2;
+            border-left: 4px solid var(--danger-color);
+            color: #991b1b;
+        }
+
+        .alert-success {
+            background: #d1fae5;
+            border-left: 4px solid var(--success-color);
+            color: #065f46;
+        }
+
+        .alert-icon {
+            font-size: 1.2rem;
+            flex-shrink: 0;
+        }
+
+        /* Lists */
+        .checklist {
+            list-style: none;
+        }
+
+        .checklist li {
+            padding: 10px 0;
+            padding-left: 30px;
+            position: relative;
+            border-bottom: 1px dashed var(--border-color);
+        }
+
+        .checklist li:last-child {
+            border-bottom: none;
+        }
+
+        .checklist li::before {
+            content: "✓";
+            position: absolute;
+            left: 0;
+            color: var(--success-color);
+            font-weight: bold;
+        }
+
+        .checklist li.optional::before {
+            content: "○";
+            color: var(--text-secondary);
+        }
+
+        /* Info Grid */
+        .info-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 20px;
+        }
+
+        /* Timeline */
+        .timeline {
+            position: relative;
+            padding-left: 30px;
+        }
+
+        .timeline::before {
+            content: "";
+            position: absolute;
+            left: 10px;
+            top: 0;
+            bottom: 0;
+            width: 2px;
+            background: var(--border-color);
+        }
+
+        .timeline-item {
+            position: relative;
+            padding-bottom: 24px;
+        }
+
+        .timeline-item::before {
+            content: "";
+            position: absolute;
+            left: -24px;
+            top: 6px;
+            width: 12px;
+            height: 12px;
+            background: var(--primary-color);
+            border-radius: 50%;
+        }
+
+        .timeline-date {
+            font-size: 0.85rem;
+            color: var(--primary-color);
+            font-weight: 600;
+            margin-bottom: 4px;
+        }
+
+        .timeline-content {
+            background: var(--card-bg);
+            padding: 16px;
+            border-radius: 10px;
+            border: 1px solid var(--border-color);
+        }
+
+        /* FAQ */
+        .faq-item {
+            border: 1px solid var(--border-color);
+            border-radius: 10px;
+            margin-bottom: 12px;
+            overflow: hidden;
+        }
+
+        .faq-question {
+            padding: 16px 20px;
+            background: var(--card-bg);
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-weight: 500;
+        }
+
+        .faq-question:hover {
+            background: #f8fafc;
+        }
+
+        .faq-answer {
+            padding: 0 20px;
+            max-height: 0;
+            overflow: hidden;
+            transition: all 0.3s ease;
+            background: #f8fafc;
+        }
+
+        .faq-item.open .faq-answer {
+            padding: 16px 20px;
+            max-height: 500px;
+        }
+
+        .faq-arrow {
+            transition: transform 0.3s ease;
+        }
+
+        .faq-item.open .faq-arrow {
+            transform: rotate(180deg);
+        }
+
+        /* Tags */
+        .tag {
+            display: inline-block;
+            padding: 4px 12px;
+            background: var(--primary-color);
+            color: white;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            margin-right: 8px;
+            margin-bottom: 8px;
+        }
+
+        .tag.warning {
+            background: var(--warning-color);
+        }
+
+        .tag.danger {
+            background: var(--danger-color);
+        }
+
+        .tag.success {
+            background: var(--success-color);
+        }
+
+        /* Resource Links */
+        .resource-link {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            padding: 12px 16px;
+            background: #f0f9ff;
+            border-radius: 8px;
+            margin-bottom: 10px;
+            text-decoration: none;
+            color: var(--primary-color);
+            transition: all 0.2s ease;
+        }
+
+        .resource-link:hover {
+            background: #e0f2fe;
+            transform: translateX(4px);
+        }
+
+        /* Table */
+        .table-container {
+            overflow-x: auto;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 0.95rem;
+        }
+
+        th, td {
+            padding: 12px 16px;
+            text-align: left;
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        th {
+            background: #f8fafc;
+            font-weight: 600;
+        }
+
+        tr:hover td {
+            background: #f8fafc;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .header h1 {
+                font-size: 1.5rem;
+            }
+
+            .tabs {
+                flex-direction: column;
+            }
+
+            .tab {
+                text-align: center;
+            }
+
+            .info-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        /* Highlight */
+        .highlight {
+            background: linear-gradient(120deg, #fef3c7 0%, #fef3c7 100%);
+            padding: 2px 6px;
+            border-radius: 4px;
+        }
+
+        /* Accordion for sub-sections */
+        .accordion-header {
+            padding: 14px 20px;
+            background: #f1f5f9;
+            border-radius: 8px;
+            cursor: pointer;
+            font-weight: 600;
+            margin-bottom: 10px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .accordion-header:hover {
+            background: #e2e8f0;
+        }
+
+        .accordion-content {
+            padding-left: 20px;
+            margin-bottom: 20px;
+        }
+
+        /* Print Style */
+        @media print {
+            .tabs, .search-container {
+                display: none;
+            }
+            .section {
+                display: block !important;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>中国矿业大学（北京）专业硕士</h1>
+            <h2>毕业论文答辩与学位申请知识库</h2>
+            <p>基于2026届夏季毕业答辩微信群问答整理</p>
+        </div>
+
+        <div class="search-container">
+            <input type="text" class="search-box" id="searchBox" placeholder="搜索关键词，如：修改说明、查重、胶装、答辩材料...">
+        </div>
+
+        <div class="tabs">
+            <div class="tab active" data-tab="overview">概览</div>
+            <div class="tab" data-tab="review">论文评阅</div>
+            <div class="tab" data-tab="defense">答辩准备</div>
+            <div class="tab" data-tab="degree">学位申请</div>
+            <div class="tab" data-tab="materials">材料清单</div>
+            <div class="tab" data-tab="faq">常见问题</div>
+            <div class="tab" data-tab="resources">资源下载</div>
+        </div>
+
+        <!-- 概览 -->
+        <div class="section active" id="overview">
+            <div class="alert alert-warning">
+                <span class="alert-icon">⚠️</span>
+                <div>
+                    <strong>重要提醒：</strong>本年度时间安排紧凑，请密切关注截止日期！答辩需在6月1日前完成，学位申请需在6月2日前完成。
+                </div>
+            </div>
+
+            <div class="info-grid">
+                <div class="card">
+                    <div class="card-header">
+                        <div class="card-icon">📅</div>
+                        <div class="card-title">关键时间节点</div>
+                    </div>
+                    <div class="card-content">
+                        <ul class="checklist">
+                            <li><strong>答辩截止：</strong>6月1日前完成</li>
+                            <li><strong>学位申请截止：</strong>6月2日前完成</li>
+                            <li><strong>材料提交：</strong>答辩材料及论文6月2日前交到理化楼206或316</li>
+                            <li><strong>答辩手续办理：</strong>周五下午5点前交给秘书</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <div class="card-header">
+                        <div class="card-icon">📊</div>
+                        <div class="card-title">评阅进度参考</div>
+                    </div>
+                    <div class="card-content">
+                        <p>本季进入送审环节共<strong>280人</strong></p>
+                        <p style="margin-top: 10px;">截至5月14日：</p>
+                        <ul class="checklist">
+                            <li>外审通过：54人</li>
+                            <li>非外审通过：63人</li>
+                            <li>合计评阅完成：117人</li>
+                        </ul>
+                        <p style="margin-top: 10px; color: var(--text-secondary); font-size: 0.9rem;">复评结果至少需要一周时间</p>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <div class="card-header">
+                        <div class="card-icon">🏢</div>
+                        <div class="card-title">办公地点</div>
+                    </div>
+                    <div class="card-content">
+                        <ul class="checklist">
+                            <li><strong>理化楼206</strong> - 张老师</li>
+                            <li><strong>理化楼316</strong> - 苗老师</li>
+                        </ul>
+                        <p style="margin-top: 10px; font-size: 0.9rem; color: var(--text-secondary);">答辩材料由秘书统一提交</p>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <div class="card-header">
+                        <div class="card-icon">📱</div>
+                        <div class="card-title">打印店联系方式</div>
+                    </div>
+                    <div class="card-content">
+                        <p><strong>学校打印店（食堂中间）：</strong></p>
+                        <p>老板微信可通过同学获取</p>
+                        <p style="margin-top: 10px;"><strong>北京飞印艺彩图文：</strong></p>
+                        <p>地址：海淀区学院路7-6号</p>
+                        <p>电话：<strong>13371786225</strong></p>
+                        <p style="margin-top: 10px;"><strong>幸福荣耀超市打印店：</strong></p>
+                        <p>位置：学校东门袁记云饺商业体内</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- 论文评阅 -->
+        <div class="section" id="review">
+            <div class="card">
+                <div class="card-header">
+                    <div class="card-icon">📝</div>
+                    <div class="card-title">评阅结果类型</div>
+                </div>
+                <div class="card-content">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>评阅结果</th>
+                                <th>分数区间</th>
+                                <th>后续操作</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td><span class="tag success">同意答辩</span></td>
+                                <td>85分以上</td>
+                                <td>无需提交修改说明</td>
+                            </tr>
+                            <tr>
+                                <td><span class="tag warning">小修改后答辩</span></td>
+                                <td>75-84分</td>
+                                <td>需提交修改说明</td>
+                            </tr>
+                            <tr>
+                                <td><span class="tag danger">大修改后答辩</span></td>
+                                <td>70-74分</td>
+                                <td>修改说明 + 低于75分情况说明</td>
+                            </tr>
+                            <tr>
+                                <td><span class="tag danger">复评</span></td>
+                                <td>-</td>
+                                <td>需额外一份评阅书，至少等待一周</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <div class="card">
+                <div class="card-header">
+                    <div class="card-icon">✏️</div>
+                    <div class="card-title">修改说明要求</div>
+                </div>
+                <div class="card-content">
+                    <div class="alert alert-warning">
+                        <span class="alert-icon">📌</span>
+                        <div>
+                            <strong>核心规则：</strong>只要有一份评阅意见是"小修改后答辩"，就需要写修改说明。
+                        </div>
+                    </div>
+
+                    <h4 style="margin: 16px 0 12px;">修改说明填写要点：</h4>
+                    <ul class="checklist">
+                        <li>所有评阅人意见（含两个评阅人+导师，共3人）汇总在一起</li>
+                        <li><strong>只写一份</strong>修改说明即可</li>
+                        <li>控制在<span class="highlight">正反面一张A4纸</span></li>
+                        <li>不用写哪位评阅人提的意见，问题类似的汇总</li>
+                        <li>错别字格式错误的不用写</li>
+                        <li>挑重点写，主要写"该改的，改了即可"</li>
+                        <li>需<span class="highlight">导师签字</span>后上传系统（可以电子签）</li>
+                    </ul>
+
+                    <h4 style="margin: 16px 0 12px;">上传位置：</h4>
+                    <p>在<strong>答辩模块</strong>的"论文修改"处上传，申请答辩时才能看到入口。</p>
+                </div>
+            </div>
+
+            <div class="card">
+                <div class="card-header">
+                    <div class="card-icon">📋</div>
+                    <div class="card-title">低于75分情况说明</div>
+                </div>
+                <div class="card-content">
+                    <div class="alert alert-danger">
+                        <span class="alert-icon">⚠️</span>
+                        <div>
+                            <strong>适用范围：</strong>包括外审评阅书和导师评阅书，任一评分低于75分都需要提交。
+                        </div>
+                    </div>
+                    <ul class="checklist">
+                        <li>需要学生本人和导师签字（可以电子签）</li>
+                        <li>系统上有模板可参考</li>
+                        <li>内容参考论文修改说明，大同小异</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <!-- 答辩准备 -->
+        <div class="section" id="defense">
+            <div class="card">
+                <div class="card-header">
+                    <div class="card-icon">🎓</div>
+                    <div class="card-title">答辩申请流程</div>
+                </div>
+                <div class="card-content">
+                    <div class="timeline">
+                        <div class="timeline-item">
+                            <div class="timeline-date">Step 1</div>
+                            <div class="timeline-content">
+                                <strong>确认评阅结果</strong>
+                                <p>所有评阅意见返回且通过后，方可申请答辩</p>
+                            </div>
+                        </div>
+                        <div class="timeline-item">
+                            <div class="timeline-date">Step 2</div>
+                            <div class="timeline-content">
+                                <strong>填写论文修改说明</strong>
+                                <p>有小修意见的同学需填写修改说明，导师签字（电子签即可）</p>
+                            </div>
+                        </div>
+                        <div class="timeline-item">
+                            <div class="timeline-date">Step 3</div>
+                            <div class="timeline-content">
+                                <strong>上传修改说明到系统</strong>
+                                <p>在答辩模块的"论文修改"处上传</p>
+                            </div>
+                        </div>
+                        <div class="timeline-item">
+                            <div class="timeline-date">Step 4</div>
+                            <div class="timeline-content">
+                                <strong>填写答辩申请信息</strong>
+                                <p>包括答辩时间、地点等，提交后等待导师审核</p>
+                            </div>
+                        </div>
+                        <div class="timeline-item">
+                            <div class="timeline-date">Step 5</div>
+                            <div class="timeline-content">
+                                <strong>准备答辩材料</strong>
+                                <p>材料齐全后交给答辩秘书，由秘书统一办理答辩手续</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="card">
+                <div class="card-header">
+                    <div class="card-icon">📄</div>
+                    <div class="card-title">学位申请书填写指南</div>
+                </div>
+                <div class="card-content">
+                    <h4 style="margin-bottom: 12px;">关键字段填写说明：</h4>
+                    <table>
+                        <tbody>
+                            <tr>
+                                <td><strong>学位类别</strong></td>
+                                <td>工商管理硕士 / 会计硕士</td>
+                            </tr>
+                            <tr>
+                                <td><strong>专业学位领域</strong></td>
+                                <td>工商管理 / 会计</td>
+                            </tr>
+                            <tr>
+                                <td><strong>论文提交日期</strong></td>
+                                <td>一般填写提交查重那天</td>
+                            </tr>
+                            <tr>
+                                <td><strong>学位授予日期</strong></td>
+                                <td>留空或按学校通知填写</td>
+                            </tr>
+                            <tr>
+                                <td><strong>委培定向单位</strong></td>
+                                <td>在系统"个人资料"中补充后重新导出</td>
+                            </tr>
+                            <tr>
+                                <td><strong>分类号</strong></td>
+                                <td>参考中图分类号（管理学C939），可查 <a href="http://www.ztflh.com/" target="_blank">ztflh.com</a></td>
+                            </tr>
+                            <tr>
+                                <td><strong>UDC分类号</strong></td>
+                                <td>国际分类号，可查 <a href="http://www.udcsummary.info/php/index.php?lang=chi&pr=Y" target="_blank">UDC官网</a></td>
+                            </tr>
+                            <tr>
+                                <td><strong>研究内容及意义</strong></td>
+                                <td>需自己填写（标黄处）</td>
+                            </tr>
+                            <tr>
+                                <td><strong>导师意见</strong></td>
+                                <td>导师审核通过后系统自动生成，可复制过来</td>
+                            </tr>
+                        </tbody>
+                    </table>
+
+                    <div class="alert alert-success" style="margin-top: 16px;">
+                        <span class="alert-icon">💡</span>
+                        <div>
+                            <strong>提示：</strong>学位申请书需<strong>双面打印</strong>，部分内容自动生成无法编辑。如信息未自动生成，说明之前填写的信息不全。
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="card">
+                <div class="card-header">
+                    <div class="card-icon">📖</div>
+                    <div class="card-title">论文打印与装订</div>
+                </div>
+                <div class="card-content">
+                    <h4>答辩用论文：</h4>
+                    <ul class="checklist">
+                        <li>根据答辩委员会成员人数，人手一份</li>
+                        <li><strong>可以简装</strong>，无须正式胶装</li>
+                        <li>答辩完可归还学生本人</li>
+                    </ul>
+
+                    <h4 style="margin-top: 20px;">最终提交论文（胶装版）：</h4>
+                    <ul class="checklist">
+                        <li>需<span class="highlight">正式胶装</span>，要有书脊</li>
+                        <li>注意封面颜色要求</li>
+                        <li>师生在<strong>独创性声明页签字</strong>后上传系统查重</li>
+                        <li>独创性声明页可用电子签（导师和本人电子签后PDF打印）</li>
+                        <li>纸质版论文只需提交<strong>一份</strong></li>
+                    </ul>
+
+                    <h4 style="margin-top: 20px;">打印价格参考：</h4>
+                    <p>黑白激光打印：<strong>0.15元/面</strong></p>
+                </div>
+            </div>
+
+            <div class="card">
+                <div class="card-header">
+                    <div class="card-icon">📝</div>
+                    <div class="card-title">大摘要要求</div>
+                </div>
+                <div class="card-content">
+                    <ul class="checklist">
+                        <li>字数要求：<strong>3000-5000字</strong>（仅中文部分）</li>
+                        <li>中英对照</li>
+                        <li>模板可在学校网站下载</li>
+                        <li><strong>不需要查重</strong></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <!-- 学位申请 -->
+        <div class="section" id="degree">
+            <div class="alert alert-danger">
+                <span class="alert-icon">🔴</span>
+                <div>
+                    <strong>关键步骤：</strong>学位申请是最重要的一步，有关信息涉及证书真实性认证，请务必仔细核对！
+                </div>
+            </div>
+
+            <div class="card">
+                <div class="card-header">
+                    <div class="card-icon">🔄</div>
+                    <div class="card-title">学位申请流程</div>
+                </div>
+                <div class="card-content">
+                    <div class="timeline">
+                        <div class="timeline-item">
+                            <div class="timeline-date">前置条件</div>
+                            <div class="timeline-content">
+                                <strong>答辩完成后</strong>
+                                <p>需等待导师和秘书录完系统信息（答辩记录、答辩决议、答辩结果和分数）</p>
+                            </div>
+                        </div>
+                        <div class="timeline-item">
+                            <div class="timeline-date">Step 1</div>
+                            <div class="timeline-content">
+                                <strong>核对基本信息</strong>
+                                <p>确保系统内基本信息齐全无误</p>
+                            </div>
+                        </div>
+                        <div class="timeline-item">
+                            <div class="timeline-date">Step 2</div>
+                            <div class="timeline-content">
+                                <strong>上传修改说明</strong>
+                                <p>在"论文修改"处上传已签字的修改说明</p>
+                            </div>
+                        </div>
+                        <div class="timeline-item">
+                            <div class="timeline-date">Step 3</div>
+                            <div class="timeline-content">
+                                <strong>确认导师评语</strong>
+                                <p>"同意答辩"应为"是"</p>
+                            </div>
+                        </div>
+                        <div class="timeline-item">
+                            <div class="timeline-date">Step 4</div>
+                            <div class="timeline-content">
+                                <strong>确认答辩信息</strong>
+                                <p>由秘书填写</p>
+                            </div>
+                        </div>
+                        <div class="timeline-item">
+                            <div class="timeline-date">Step 5</div>
+                            <div class="timeline-content">
+                                <strong>提交学位申请</strong>
+                                <p>核对无误后提交，请导师审核</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="card">
+                <div class="card-header">
+                    <div class="card-icon">⚠️</div>
+                    <div class="card-title">常见问题与解决</div>
+                </div>
+                <div class="card-content">
+                    <div class="faq-item">
+                        <div class="faq-question">
+                            <span>无法提交学位申请？</span>
+                            <span class="faq-arrow">▼</span>
+                        </div>
+                        <div class="faq-answer">
+                            <p>可能原因：</p>
+                            <ul>
+                                <li>答辩结果未通过或未审核</li>
+                                <li>未上传修改说明</li>
+                                <li>答辩记录未录入</li>
+                                <li>质量评价未打分</li>
+                            </ul>
+                            <p style="margin-top: 10px;">解决：联系答辩秘书确认各项信息是否已录入系统。</p>
+                        </div>
+                    </div>
+                    <div class="faq-item">
+                        <div class="faq-question">
+                            <span>答辩申请信息填错如何修改？</span>
+                            <span class="faq-arrow">▼</span>
+                        </div>
+                        <div class="faq-answer">
+                            <p>导师未审核：可直接删除重新填写</p>
+                            <p>导师已审核：需导师撤销审核后修改，或联系秘书修改</p>
+                        </div>
+                    </div>
+                    <div class="faq-item">
+                        <div class="faq-question">
+                            <span>论文题目需要修改？</span>
+                            <span class="faq-arrow">▼</span>
+                        </div>
+                        <div class="faq-answer">
+                            <p>在学位申请书和决议上有专门填写题目修改的栏目</p>
+                            <p>答辩后修改题目：直接以最新版胶装即可</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- 材料清单 -->
+        <div class="section" id="materials">
+            <div class="card">
+                <div class="card-header">
+                    <div class="card-icon">📁</div>
+                    <div class="card-title">线下提交材料清单</div>
+                </div>
+                <div class="card-content">
+                    <ul class="checklist">
+                        <li><strong>学位申请书</strong> - 填齐填全相关内容</li>
+                        <li><strong>评阅书</strong> - 两位专家各一份 + 导师一份（共3份）</li>
+                        <li class="optional"><strong>复评者额外评阅书</strong> - 复评同学需多一份（共4份）</li>
+                        <li><strong>论文质量评价表</strong> - 总分、分项分齐全</li>
+                        <li class="optional"><strong>修改说明</strong> - 有小修意见的需提交，需导师签字（可电子签）</li>
+                        <li class="optional"><strong>低于75分情况说明</strong> - 任一评分低于75分的需提交，学生和导师签字</li>
+                        <li class="optional"><strong>AIGC检测说明</strong> - 全文超20%或部分超30%的需提交</li>
+                        <li><strong>纸质论文一本</strong> - 最新版即可，需正式胶装</li>
+                        <li><strong>表决票</strong> - 由秘书领取</li>
+                    </ul>
+
+                    <div class="alert alert-warning" style="margin-top: 16px;">
+                        <span class="alert-icon">📍</span>
+                        <div>
+                            <strong>提交方式：</strong>上述材料由答辩秘书统一收齐后交到理化楼206（张老师）或316（苗老师）处
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="card">
+                <div class="card-header">
+                    <div class="card-icon">💻</div>
+                    <div class="card-title">线上提交内容清单</div>
+                </div>
+                <div class="card-content">
+                    <ul class="checklist">
+                        <li><strong>基本信息</strong> - 齐全无误</li>
+                        <li><strong>论文修改说明</strong> - 上传已签字的修改说明</li>
+                        <li><strong>导师评语</strong> - "同意答辩"为"是"</li>
+                        <li><strong>答辩信息</strong> - 由秘书填写</li>
+                        <li><strong>答辩记录</strong> - 问题答案交给秘书处理</li>
+                        <li><strong>回答问题</strong> - 录入系统</li>
+                        <li><strong>答辩决议</strong> - 录入系统</li>
+                        <li><strong>答辩结果和分数</strong> - 录入系统</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="card">
+                <div class="card-header">
+                    <div class="card-icon">🤖</div>
+                    <div class="card-title">AIGC检测说明</div>
+                </div>
+                <div class="card-content">
+                    <div class="alert alert-warning">
+                        <span class="alert-icon">⚠️</span>
+                        <div>
+                            <strong>提交条件：</strong>AIGC检测全文超20%或部分超30%的学位论文须提交说明
+                        </div>
+                    </div>
+                    <ul class="checklist">
+                        <li>需简要分析超标的原因并说明</li>
+                        <li>答辩时请导师签字后提交（可电子签）</li>
+                        <li>延期的、评阅未过的、答辩未过的可不交</li>
+                        <li>之前已交过的不用再交</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <!-- 常见问题 -->
+        <div class="section" id="faq">
+            <div class="card">
+                <div class="card-header">
+                    <div class="card-icon">❓</div>
+                    <div class="card-title">评阅相关</div>
+                </div>
+                <div class="card-content">
+                    <div class="faq-item">
+                        <div class="faq-question">
+                            <span>评审结果一直没出怎么办？</span>
+                            <span class="faq-arrow">▼</span>
+                        </div>
+                        <div class="faq-answer">
+                            <p>1. 可以问问导师送了没有，或许导师没送，或许送了对方还没评</p>
+                            <p>2. 评审结果有截止日期，请参照文件通知</p>
+                            <p>3. 复评结果至少需要一周时间</p>
+                        </div>
+                    </div>
+                    <div class="faq-item">
+                        <div class="faq-question">
+                            <span>专家评审意见没有签名怎么办？</span>
+                            <span class="faq-arrow">▼</span>
+                        </div>
+                        <div class="faq-answer">
+                            <p>外审专家评阅意见不需要签名，只有导师评阅意见需要导师签字。</p>
+                        </div>
+                    </div>
+                    <div class="faq-item">
+                        <div class="faq-question">
+                            <span>评阅书上学号有误有影响吗？</span>
+                            <span class="faq-arrow">▼</span>
+                        </div>
+                        <div class="faq-answer">
+                            <p>没有影响，系统生成的PDF文档中学号可能存在显示问题，不影响评审结果。</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="card">
+                <div class="card-header">
+                    <div class="card-icon">❓</div>
+                    <div class="card-title">答辩相关</div>
+                </div>
+                <div class="card-content">
+                    <div class="faq-item">
+                        <div class="faq-question">
+                            <span>答辩申请时间和地点填错了怎么办？</span>
+                            <span class="faq-arrow">▼</span>
+                        </div>
+                        <div class="faq-answer">
+                            <p>导师未审核：可直接删除重新填写</p>
+                            <p>导师已审核：需导师撤销审核后修改，或联系秘书修改</p>
+                        </div>
+                    </div>
+                    <div class="faq-item">
+                        <div class="faq-question">
+                            <span>论文选题来源、开题年月填错了有影响吗？</span>
+                            <span class="faq-arrow">▼</span>
+                        </div>
+                        <div class="faq-answer">
+                            <p>没什么影响，最后以提交存档版为准。后面还有个存档论文上传的环节，那里的信息填对就行。</p>
+                        </div>
+                    </div>
+                    <div class="faq-item">
+                        <div class="faq-question">
+                            <span>需要建立临时答辩群吗？</span>
+                            <span class="faq-arrow">▼</span>
+                        </div>
+                        <div class="faq-answer">
+                            <p>是的，请大家配合所在组答辩秘书建临时答辩群，便于通知和收发答辩材料。具体等导师或秘书通知。</p>
+                        </div>
+                    </div>
+                    <div class="faq-item">
+                        <div class="faq-question">
+                            <span>最终版论文封面在哪里获取可编辑版本？</span>
+                            <span class="faq-arrow">▼</span>
+                        </div>
+                        <div class="faq-answer">
+                            <p>校园网上有模板下载。也可以直接联系打印店，老板那边有封面模板，可以帮忙处理好。</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="card">
+                <div class="card-header">
+                    <div class="card-icon">❓</div>
+                    <div class="card-title">系统操作相关</div>
+                </div>
+                <div class="card-content">
+                    <div class="faq-item">
+                        <div class="faq-question">
+                            <span>答辩申请状态"修改中"如何改成"已完成"？</span>
+                            <span class="faq-arrow">▼</span>
+                        </div>
+                        <div class="faq-answer">
+                            <p>提交状态下拉选择即可修改，系统接受处理的状态为"已完成"。</p>
+                        </div>
+                    </div>
+                    <div class="faq-item">
+                        <div class="faq-question">
+                            <span>前置学位信息没带出来怎么办？</span>
+                            <span class="faq-arrow">▼</span>
+                        </div>
+                        <div class="faq-answer">
+                            <p>在系统"个人信息"中把学历信息填完整，特别是学士的代码填上，然后重新导出。</p>
+                        </div>
+                    </div>
+                    <div class="faq-item">
+                        <div class="faq-question">
+                            <span>委培定向单位显示空白？</span>
+                            <span class="faq-arrow">▼</span>
+                        </div>
+                        <div class="faq-answer">
+                            <p>在系统中的"个人资料"处修改补充信息，然后重新导出学位申请书即可。</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="card">
+                <div class="card-header">
+                    <div class="card-icon">❓</div>
+                    <div class="card-title">查重与检测相关</div>
+                </div>
+                <div class="card-content">
+                    <div class="faq-item">
+                        <div class="faq-question">
+                            <span>上传毕业论文前最后一次查重包含AIGC检测吗？</span>
+                            <span class="faq-arrow">▼</span>
+                        </div>
+                        <div class="faq-answer">
+                            <p>是的，包含AIGC检测。</p>
+                        </div>
+                    </div>
+                    <div class="faq-item">
+                        <div class="faq-question">
+                            <span>大摘要需要查重吗？</span>
+                            <span class="faq-arrow">▼</span>
+                        </div>
+                        <div class="faq-answer">
+                            <p>不需要查重。</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- 资源下载 -->
+        <div class="section" id="resources">
+            <div class="card">
+                <div class="card-header">
+                    <div class="card-icon">📥</div>
+                    <div class="card-title">模板与文档</div>
+                </div>
+                <div class="card-content">
+                    <div class="alert alert-info">
+                        <span class="alert-icon">📌</span>
+                        <div>
+                            以下模板可在<strong>学校校园网</strong>下载，部分由老师在微信群发布
+                        </div>
+                    </div>
+
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>文档名称</th>
+                                <th>说明</th>
+                                <th>来源</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>硕士专业学位论文模板</td>
+                                <td>论文撰写格式模板</td>
+                                <td>校园网</td>
+                            </tr>
+                            <tr>
+                                <td>硕士专业学位论文摘要模板</td>
+                                <td>大摘要格式模板</td>
+                                <td>校园网</td>
+                            </tr>
+                            <tr>
+                                <td>2026夏专业硕士毕业答辩须知</td>
+                                <td>答辩流程与材料说明</td>
+                                <td>微信群</td>
+                            </tr>
+                            <tr>
+                                <td>研究生学位论文答辩工作须知</td>
+                                <td>答辩详细指南</td>
+                                <td>微信群</td>
+                            </tr>
+                            <tr>
+                                <td>AIGC检测情况说明模板</td>
+                                <td>AIGC超标情况说明参考</td>
+                                <td>微信群</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <div class="card">
+                <div class="card-header">
+                    <div class="card-icon">🔗</div>
+                    <div class="card-title">实用链接</div>
+                </div>
+                <div class="card-content">
+                    <a href="http://www.ztflh.com/" target="_blank" class="resource-link">
+                        <span>📚</span>
+                        <span>中图分类号查询（国内分类号）</span>
+                    </a>
+                    <a href="http://www.udcsummary.info/php/index.php?lang=chi&pr=Y" target="_blank" class="resource-link">
+                        <span>🌐</span>
+                        <span>UDC分类号查询（国际分类号）</span>
+                    </a>
+                </div>
+            </div>
+
+            <div class="card">
+                <div class="card-header">
+                    <div class="card-icon">📞</div>
+                    <div class="card-title">联系方式</div>
+                </div>
+                <div class="card-content">
+                    <table>
+                        <tbody>
+                            <tr>
+                                <td><strong>理化楼206</strong></td>
+                                <td>张老师</td>
+                                <td>答辩材料提交</td>
+                            </tr>
+                            <tr>
+                                <td><strong>理化楼316</strong></td>
+                                <td>苗老师</td>
+                                <td>答辩材料提交</td>
+                            </tr>
+                            <tr>
+                                <td><strong>打印店</strong></td>
+                                <td>13371786225</td>
+                                <td>论文打印胶装</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+
+        <footer style="text-align: center; padding: 30px; color: var(--text-secondary); font-size: 0.9rem;">
+            <p>本知识库基于2026届夏季毕业答辩微信群问答整理</p>
+            <p style="margin-top: 8px;">整理时间：2026年6月 | 仅供参考，具体以学校官方通知为准</p>
+        </footer>
+    </div>
+
+    <script>
+        // Tab switching
+        document.querySelectorAll('.tab').forEach(tab => {
+            tab.addEventListener('click', () => {
+                document.querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
+                document.querySelectorAll('.section').forEach(s => s.classList.remove('active'));
+                tab.classList.add('active');
+                document.getElementById(tab.dataset.tab).classList.add('active');
+            });
+        });
+
+        // FAQ accordion
+        document.querySelectorAll('.faq-question').forEach(question => {
+            question.addEventListener('click', () => {
+                question.parentElement.classList.toggle('open');
+            });
+        });
+
+        // Search functionality
+        const searchBox = document.getElementById('searchBox');
+        searchBox.addEventListener('input', (e) => {
+            const query = e.target.value.toLowerCase();
+            if (query.length < 2) return;
+
+            // Search in all cards and highlight
+            document.querySelectorAll('.card').forEach(card => {
+                const text = card.textContent.toLowerCase();
+                if (text.includes(query)) {
+                    card.style.display = '';
+                    // Show parent section
+                    const section = card.closest('.section');
+                    if (section) {
+                        document.querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
+                        document.querySelectorAll('.section').forEach(s => s.classList.remove('active'));
+                        section.classList.add('active');
+                        document.querySelector(`[data-tab="${section.id}"]`).classList.add('active');
+                    }
+                }
+            });
+        });
+
+        // Clear search on escape
+        searchBox.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape') {
+                searchBox.value = '';
+            }
+        });
+    </script>
+</body>
+</html>
