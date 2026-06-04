@@ -188,6 +188,12 @@
             color: #065f46;
         }
 
+        .alert-info {
+            background: #e0f2fe;
+            border-left: 4px solid var(--primary-color);
+            color: #0c4a6e;
+        }
+
         .alert-icon {
             font-size: 1.2rem;
             flex-shrink: 0;
@@ -210,7 +216,7 @@
         }
 
         .checklist li::before {
-            content: "✓";
+            content: "\2713";
             position: absolute;
             left: 0;
             color: var(--success-color);
@@ -218,8 +224,14 @@
         }
 
         .checklist li.optional::before {
-            content: "○";
+            content: "\25CB";
             color: var(--text-secondary);
+        }
+
+        .checklist li.warning::before {
+            content: "!";
+            color: var(--warning-color);
+            font-weight: bold;
         }
 
         /* Info Grid */
@@ -307,7 +319,7 @@
 
         .faq-item.open .faq-answer {
             padding: 16px 20px;
-            max-height: 500px;
+            max-height: 800px;
         }
 
         .faq-arrow {
@@ -413,28 +425,6 @@
             border-radius: 4px;
         }
 
-        /* Accordion for sub-sections */
-        .accordion-header {
-            padding: 14px 20px;
-            background: #f1f5f9;
-            border-radius: 8px;
-            cursor: pointer;
-            font-weight: 600;
-            margin-bottom: 10px;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-
-        .accordion-header:hover {
-            background: #e2e8f0;
-        }
-
-        .accordion-content {
-            padding-left: 20px;
-            margin-bottom: 20px;
-        }
-
         /* Print Style */
         @media print {
             .tabs, .search-container {
@@ -444,6 +434,21 @@
                 display: block !important;
             }
         }
+
+        /* Phase badge */
+        .phase-badge {
+            display: inline-block;
+            padding: 6px 16px;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            margin-bottom: 12px;
+        }
+        .phase-1 { background: #dbeafe; color: #1e40af; }
+        .phase-2 { background: #fef3c7; color: #92400e; }
+        .phase-3 { background: #d1fae5; color: #065f46; }
+        .phase-4 { background: #ede9fe; color: #5b21b6; }
+        .phase-5 { background: #fce7f3; color: #9d174d; }
     </style>
 </head>
 <body>
@@ -455,12 +460,13 @@
         </div>
 
         <div class="search-container">
-            <input type="text" class="search-box" id="searchBox" placeholder="搜索关键词，如：修改说明、查重、胶装、答辩材料...">
+            <input type="text" class="search-box" id="searchBox" placeholder="搜索关键词，如：修改说明、查重、胶装、答辩材料、AIGC、预答辩...">
         </div>
 
         <div class="tabs">
             <div class="tab active" data-tab="overview">概览</div>
-            <div class="tab" data-tab="review">论文评阅</div>
+            <div class="tab" data-tab="predefense">预答辩</div>
+            <div class="tab" data-tab="review">评审与查重</div>
             <div class="tab" data-tab="defense">答辩准备</div>
             <div class="tab" data-tab="degree">学位申请</div>
             <div class="tab" data-tab="materials">材料清单</div>
@@ -470,8 +476,8 @@
 
         <!-- 概览 -->
         <div class="section active" id="overview">
-            <div class="alert alert-warning">
-                <span class="alert-icon">⚠️</span>
+            <div class="alert alert-danger">
+                <span class="alert-icon">&#x1F534;</span>
                 <div>
                     <strong>重要提醒：</strong>本年度时间安排紧凑，请密切关注截止日期！答辩需在6月1日前完成，学位申请需在6月2日前完成。
                 </div>
@@ -480,45 +486,65 @@
             <div class="info-grid">
                 <div class="card">
                     <div class="card-header">
-                        <div class="card-icon">📅</div>
+                        <div class="card-icon">&#x1F4C5;</div>
                         <div class="card-title">关键时间节点</div>
                     </div>
                     <div class="card-content">
                         <ul class="checklist">
+                            <li><strong>毕业报名：</strong>3月初，须导师审核通过</li>
+                            <li><strong>预答辩：</strong>3月15日（学院路校区教学楼）</li>
+                            <li><strong>评审申请截止：</strong>3月27日17:00</li>
+                            <li><strong>查重论文上传：</strong>3月27日前</li>
+                            <li><strong>后20/50%查重截止：</strong>4月3日</li>
+                            <li><strong>非后20%查重截止：</strong>4月10日</li>
                             <li><strong>答辩截止：</strong>6月1日前完成</li>
                             <li><strong>学位申请截止：</strong>6月2日前完成</li>
                             <li><strong>材料提交：</strong>答辩材料及论文6月2日前交到理化楼206或316</li>
-                            <li><strong>答辩手续办理：</strong>周五下午5点前交给秘书</li>
                         </ul>
                     </div>
                 </div>
 
                 <div class="card">
                     <div class="card-header">
-                        <div class="card-icon">📊</div>
-                        <div class="card-title">评阅进度参考</div>
+                        <div class="card-icon">&#x1F4CA;</div>
+                        <div class="card-title">总体流程</div>
                     </div>
                     <div class="card-content">
-                        <p>本季进入送审环节共<strong>280人</strong></p>
-                        <p style="margin-top: 10px;">截至5月14日：</p>
-                        <ul class="checklist">
-                            <li>外审通过：54人</li>
-                            <li>非外审通过：63人</li>
-                            <li>合计评阅完成：117人</li>
-                        </ul>
-                        <p style="margin-top: 10px; color: var(--text-secondary); font-size: 0.9rem;">复评结果至少需要一周时间</p>
+                        <div class="timeline">
+                            <div class="timeline-item">
+                                <div class="timeline-date">Phase 1</div>
+                                <div class="timeline-content"><strong>毕业报名</strong><br>系统申请毕业，导师审核</div>
+                            </div>
+                            <div class="timeline-item">
+                                <div class="timeline-date">Phase 2</div>
+                                <div class="timeline-content"><strong>预答辩</strong><br>匿名论文+PPT，15分钟/人，按成绩排名</div>
+                            </div>
+                            <div class="timeline-item">
+                                <div class="timeline-date">Phase 3</div>
+                                <div class="timeline-content"><strong>评审申请+查重+AIGC检测</strong><br>填写评审信息，格式检测，匿名论文上传查重</div>
+                            </div>
+                            <div class="timeline-item">
+                                <div class="timeline-date">Phase 4</div>
+                                <div class="timeline-content"><strong>论文送审</strong><br>评阅专家评审（2-4周），复评（如需要）</div>
+                            </div>
+                            <div class="timeline-item">
+                                <div class="timeline-date">Phase 5</div>
+                                <div class="timeline-content"><strong>答辩+学位申请</strong><br>申请答辩，准备材料，提交学位申请</div>
+                            </div>
+                        </div>
                     </div>
                 </div>
 
                 <div class="card">
                     <div class="card-header">
-                        <div class="card-icon">🏢</div>
+                        <div class="card-icon">&#x1F3E2;</div>
                         <div class="card-title">办公地点</div>
                     </div>
                     <div class="card-content">
                         <ul class="checklist">
                             <li><strong>理化楼206</strong> - 张老师</li>
                             <li><strong>理化楼316</strong> - 苗老师</li>
+                            <li><strong>培养计划问题</strong> - 找赵老师</li>
                         </ul>
                         <p style="margin-top: 10px; font-size: 0.9rem; color: var(--text-secondary);">答辩材料由秘书统一提交</p>
                     </div>
@@ -526,72 +552,324 @@
 
                 <div class="card">
                     <div class="card-header">
-                        <div class="card-icon">📱</div>
+                        <div class="card-icon">&#x1F4F1;</div>
                         <div class="card-title">打印店联系方式</div>
                     </div>
                     <div class="card-content">
-                        <p><strong>学校打印店（食堂中间）：</strong></p>
-                        <p>老板微信可通过同学获取</p>
+                        <p><strong>学校打印店（食堂中间）</strong></p>
                         <p style="margin-top: 10px;"><strong>北京飞印艺彩图文：</strong></p>
                         <p>地址：海淀区学院路7-6号</p>
                         <p>电话：<strong>13371786225</strong></p>
                         <p style="margin-top: 10px;"><strong>幸福荣耀超市打印店：</strong></p>
                         <p>位置：学校东门袁记云饺商业体内</p>
+                        <p style="margin-top: 10px; font-size: 0.9rem; color: var(--text-secondary);">黑白激光打印约0.15元/面</p>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <div class="card-header">
+                        <div class="card-icon">&#x26A0;&#xFE0F;</div>
+                        <div class="card-title">毕业答辩基本条件</div>
+                    </div>
+                    <div class="card-content">
+                        <ul class="checklist">
+                            <li>成绩、学分达标</li>
+                            <li>选题情况表及选题报告电子版和纸质版已提交</li>
+                            <li>专业实践计划表纸质版已提交</li>
+                            <li>专业实践考核登记表电子版和纸质版已提交</li>
+                            <li>已通过论文中期进展报告</li>
+                            <li>导师同意</li>
+                        </ul>
+                        <div class="alert alert-info" style="margin-top: 12px;">
+                            <span class="alert-icon">&#x1F4A1;</span>
+                            <div>培养计划、成绩、学分问题请找<strong>赵老师</strong>，属于教学环节。</div>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
 
-        <!-- 论文评阅 -->
-        <div class="section" id="review">
+        <!-- 预答辩 -->
+        <div class="section" id="predefense">
             <div class="card">
                 <div class="card-header">
-                    <div class="card-icon">📝</div>
-                    <div class="card-title">评阅结果类型</div>
+                    <div class="card-icon">&#x1F3EB;</div>
+                    <div class="card-title">预答辩流程</div>
                 </div>
                 <div class="card-content">
-                    <table>
-                        <thead>
-                            <tr>
-                                <th>评阅结果</th>
-                                <th>分数区间</th>
-                                <th>后续操作</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr>
-                                <td><span class="tag success">同意答辩</span></td>
-                                <td>85分以上</td>
-                                <td>无需提交修改说明</td>
-                            </tr>
-                            <tr>
-                                <td><span class="tag warning">小修改后答辩</span></td>
-                                <td>75-84分</td>
-                                <td>需提交修改说明</td>
-                            </tr>
-                            <tr>
-                                <td><span class="tag danger">大修改后答辩</span></td>
-                                <td>70-74分</td>
-                                <td>修改说明 + 低于75分情况说明</td>
-                            </tr>
-                            <tr>
-                                <td><span class="tag danger">复评</span></td>
-                                <td>-</td>
-                                <td>需额外一份评阅书，至少等待一周</td>
-                            </tr>
-                        </tbody>
-                    </table>
+                    <div class="timeline">
+                        <div class="timeline-item">
+                            <div class="timeline-date">Step 1</div>
+                            <div class="timeline-content">
+                                <strong>准备匿名论文</strong>
+                                <p>论文中姓名、学号、导师全部匿名。文件名格式："学生+学号+论文题目.pdf"</p>
+                                <p style="color: var(--danger-color); font-size: 0.9rem;">注意：致谢、个人简介中也必须匿名，只匿名姓名，其他信息（毕业院校等）保留</p>
+                            </div>
+                        </div>
+                        <div class="timeline-item">
+                            <div class="timeline-date">Step 2</div>
+                            <div class="timeline-content">
+                                <strong>通过导师提交匿名论文</strong>
+                                <p>匿名论文发给导师，由导师统一打包发送到苗老师邮箱 aahmiao@126.com</p>
+                                <p style="color: var(--danger-color); font-size: 0.9rem;">不接收学生个人提交的论文！不是导师发的不接收！</p>
+                            </div>
+                        </div>
+                        <div class="timeline-item">
+                            <div class="timeline-date">Step 3</div>
+                            <div class="timeline-content">
+                                <strong>预答辩当日</strong>
+                                <p>地点：学院路校区教学楼（具体分组及教室另行通知）</p>
+                                <ul style="margin-top: 8px; padding-left: 20px;">
+                                    <li>至少准备<strong>3本纸质匿名论文</strong>（简装即可，答辩前发给3位评委）</li>
+                                    <li>PPT需提前调试好，带备份（U盘+手机备份）</li>
+                                    <li>每人"汇报+问答"控制在<strong>15分钟以内</strong></li>
+                                    <li><strong>不要自我介绍</strong>，不要说导师是谁</li>
+                                    <li>综述、背景、理论少说或不说，多介绍重点论文章节及结论</li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="timeline-item">
+                            <div class="timeline-date">Step 4</div>
+                            <div class="timeline-content">
+                                <strong>预答辩结果</strong>
+                                <p>成绩按百分制排名，由导师通知学生（约一周后）</p>
+                                <ul style="margin-top: 8px; padding-left: 20px;">
+                                    <li>后20%（会计可能50%）：由研究生院匿名送审（外审）</li>
+                                    <li>其他同学：导师送审（内审）</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
 
             <div class="card">
                 <div class="card-header">
-                    <div class="card-icon">✏️</div>
-                    <div class="card-title">修改说明要求</div>
+                    <div class="card-icon">&#x1F4DD;</div>
+                    <div class="card-title">匿名论文注意事项</div>
+                </div>
+                <div class="card-content">
+                    <div class="alert alert-danger">
+                        <span class="alert-icon">&#x26A0;&#xFE0F;</span>
+                        <div>论文匿名要一直保持到正式答辩存档！中间所有送审环节都必须匿名。</div>
+                    </div>
+                    <ul class="checklist">
+                        <li>封面和封二的红框内容（姓名、学号、导师等）要匿名</li>
+                        <li>致谢页中的姓名要匿名</li>
+                        <li>个人简介中姓名匿名，其他信息（毕业院校、成绩荣誉等）保留</li>
+                        <li>论文中专业必须写上</li>
+                        <li>文件名按"学生+学号+论文题目.pdf"格式（文件名不需匿名）</li>
+                        <li>匿名论文以PDF格式提交</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="card">
+                <div class="card-header">
+                    <div class="card-icon">&#x1F4D6;</div>
+                    <div class="card-title">论文封面与封二填写</div>
                 </div>
                 <div class="card-content">
                     <div class="alert alert-warning">
-                        <span class="alert-icon">📌</span>
+                        <span class="alert-icon">&#x1F4CC;</span>
+                        <div><strong>重要：</strong>封面、封二与系统评审申请的论文题目、专业学位类别、专业学位领域、研究方向必须完全一致！</div>
+                    </div>
+                    <h4 style="margin: 12px 0;">专业学位类别与领域对应关系：</h4>
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>专业学位类别</th>
+                                <th>专业学位领域</th>
+                                <th>代码</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr><td>工商管理硕士</td><td>工商管理</td><td>1251</td></tr>
+                            <tr><td>会计硕士</td><td>会计</td><td>1253</td></tr>
+                            <tr><td>工程管理硕士</td><td>工程管理</td><td>1256</td></tr>
+                        </tbody>
+                    </table>
+                    <div class="alert alert-danger" style="margin-top: 12px;">
+                        <span class="alert-icon">&#x26D4;</span>
+                        <div><strong>研究方向绝对不能和专业学位领域一样！</strong>"工商管理硕士"研究方向不能写"工商管理"，"会计硕士"不能写"会计"，"工程管理硕士"不能写"工程管理"。写错可能导致论文误送审。</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- 评审与查重 -->
+        <div class="section" id="review">
+            <div class="card">
+                <div class="card-header">
+                    <div class="card-icon">&#x1F4DD;</div>
+                    <div class="card-title">评审申请填写指南</div>
+                </div>
+                <div class="card-content">
+                    <div class="alert alert-info">
+                        <span class="alert-icon">&#x1F4A1;</span>
+                        <div><strong>建议：</strong>先填写评审申请"占坑"，论文信息齐全了请导师审核，然后再提交查重论文。</div>
+                    </div>
+                    <table>
+                        <tbody>
+                            <tr>
+                                <td><strong>论文题目</strong></td>
+                                <td>必须与封面、封二完全一致，一个字不能差</td>
+                            </tr>
+                            <tr>
+                                <td><strong>英文题目</strong></td>
+                                <td>必填项，需填写</td>
+                            </tr>
+                            <tr>
+                                <td><strong>关键词</strong></td>
+                                <td>必填项</td>
+                            </tr>
+                            <tr>
+                                <td><strong>研究方向</strong></td>
+                                <td>非常重要！直接决定论文送给谁评阅，不能和专业学位领域相同。不确定可问导师或苗老师</td>
+                            </tr>
+                            <tr>
+                                <td><strong>选题类型</strong></td>
+                                <td>一般填"专题研究"</td>
+                            </tr>
+                            <tr>
+                                <td><strong>选题项目名称</strong></td>
+                                <td>填最终论文题目（不是开题时的题目）</td>
+                            </tr>
+                            <tr>
+                                <td><strong>选题项目负责人</strong></td>
+                                <td>填自己</td>
+                            </tr>
+                            <tr>
+                                <td><strong>自我评价</strong></td>
+                                <td>必填项，不一定要5点，1-2点也可</td>
+                            </tr>
+                            <tr>
+                                <td><strong>论文摘要</strong></td>
+                                <td>必填项</td>
+                            </tr>
+                            <tr>
+                                <td><strong>发表论文信息</strong></td>
+                                <td>有则填写，没有空白即可</td>
+                            </tr>
+                            <tr>
+                                <td><strong>提交状态</strong></td>
+                                <td>改为"已完成"即算完成申请</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <div class="alert alert-warning" style="margin-top: 12px;">
+                        <span class="alert-icon">&#x26A0;&#xFE0F;</span>
+                        <div>送审申请表不需要填写，更不用上传！</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="card">
+                <div class="card-header">
+                    <div class="card-icon">&#x1F50D;</div>
+                    <div class="card-title">格式检测</div>
+                </div>
+                <div class="card-content">
+                    <ul class="checklist">
+                        <li>格式检测可以多次检测，不限次数</li>
+                        <li>千字差错率控制在3%以下算合格（约10-20个错误以内）</li>
+                        <li>单次检测约4-5分钟，排队人多时可能需要30分钟以上</li>
+                        <li>显示"合格"二字即可通过</li>
+                        <li>格式检测通过的论文，后续不要再反复检测，小的调整也可能出瑕疵</li>
+                        <li><strong>提醒</strong>类的红字不算错误，可以先不管</li>
+                    </ul>
+                    <h4 style="margin: 16px 0 12px;">常见格式问题：</h4>
+                    <ul class="checklist">
+                        <li><strong>目录对齐问题：</strong>需使用分散对齐，不要用右对齐。可手动调整制表位，不要用AI改</li>
+                        <li><strong>空白页问题：</strong>查重文档中封面、题名页、独创性声明之后，中文摘要之前不能有空白页</li>
+                        <li><strong>参考文献数量：</strong>各导师要求不同，一般30篇左右（开题时要求80篇是选题参考文献要求）</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="card">
+                <div class="card-header">
+                    <div class="card-icon">&#x1F50D;</div>
+                    <div class="card-title">查重（学术不端检测）</div>
+                </div>
+                <div class="card-content">
+                    <div class="alert alert-danger">
+                        <span class="alert-icon">&#x26A0;&#xFE0F;</span>
+                        <div><strong>每人最多2次机会！</strong>建议先用知网自测，学校查重用知网。自费查的合格证明学校不认。</div>
+                    </div>
+
+                    <h4 style="margin: 12px 0;">查重要求：</h4>
+                    <ul class="checklist">
+                        <li>全文及各部分（章节）文字复制比<strong>不大于15%</strong></li>
+                        <li>第一次查重不通过：文字复制比15%-40%的，有一次修改机会</li>
+                        <li>第二次查重不通过：直接终止申请（延期毕业）</li>
+                        <li>学校查重时可以看出之前是否在知网自测过（目前无影响）</li>
+                    </ul>
+
+                    <h4 style="margin: 16px 0 12px;">查重论文上传要求：</h4>
+                    <ul class="checklist">
+                        <li>PDF格式<strong>必须由Word/WPS转成</strong>，绝对不能是图片转的PDF</li>
+                        <li>检测方法：鼠标放在目录上，变成<strong>小手</strong>能跳转=正常格式；变成箭头=格式不对</li>
+                        <li>封面、题名页、独创性声明之后，中文摘要之前<strong>不能有空白页</strong></li>
+                        <li>正文中的空白页（奇偶页要求）可以保留</li>
+                        <li>最终打印装订时空白页需要加回来</li>
+                        <li>上传后导师审核通过才能查重</li>
+                        <li>先交先查，全国毕业季人多时可能需要一周</li>
+                    </ul>
+
+                    <div class="alert alert-warning" style="margin-top: 12px;">
+                        <span class="alert-icon">&#x1F4CC;</span>
+                        <div><strong>查重通过的论文即被系统锁定送审</strong>，不能再修改送审版。修改后的论文只能用于后续答辩环节。</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="card">
+                <div class="card-header">
+                    <div class="card-icon">&#x1F916;</div>
+                    <div class="card-title">AIGC检测</div>
+                </div>
+                <div class="card-content">
+                    <div class="alert alert-warning">
+                        <span class="alert-icon">&#x26A0;&#xFE0F;</span>
+                        <div><strong>提交条件：</strong>AIGC检测全文超20%或部分超30%的学位论文须提交说明</div>
+                    </div>
+                    <h4 style="margin: 12px 0;">AIGC检测要点：</h4>
+                    <ul class="checklist">
+                        <li>AIGC检测与查重分开进行，先查重再AIGC检测</li>
+                        <li>AIGC检测工具由研究生系统自动关联，不一定是知网</li>
+                        <li>目前<strong>无硬性合格标准</strong>，决定权在导师</li>
+                        <li>导师有三个选项：<strong>同意继续</strong>（进入送审）、<strong>返回修改</strong>（再次检测）、<strong>终止申请</strong>（延期毕业）</li>
+                        <li>第二次AIGC检测只有"同意继续"和"终止申请"两个选项，没有"返回修改"</li>
+                    </ul>
+
+                    <h4 style="margin: 16px 0 12px;">AIGC检测说明要求：</h4>
+                    <ul class="checklist">
+                        <li>全文超20%或部分超30%需提交说明</li>
+                        <li>不用急着交，可以答辩以后再交</li>
+                        <li>送审不过的也没必要交了</li>
+                        <li>答辩后交的比较急，建议先准备好</li>
+                        <li>需导师签字（可电子签）</li>
+                        <li>如果是文献综述、理论方法、附录、调查表相关内容导致超标，可和导师说明</li>
+                        <li>延期的、评阅未过的、答辩未过的可不交</li>
+                        <li>之前已交过的不用再交</li>
+                    </ul>
+
+                    <div class="alert alert-danger" style="margin-top: 12px;">
+                        <span class="alert-icon">&#x26A0;&#xFE0F;</span>
+                        <div><strong>典型案例：</strong>第一次查重过了但AIGC导师意见是"返回修改"，第二稿查重时查重超标，最终结论就是终止申请（延期）。所以修改二稿要慎重！</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="card">
+                <div class="card-header">
+                    <div class="card-icon">&#x1F4DD;</div>
+                    <div class="card-title">论文修改说明</div>
+                </div>
+                <div class="card-content">
+                    <div class="alert alert-warning">
+                        <span class="alert-icon">&#x1F4CC;</span>
                         <div>
                             <strong>核心规则：</strong>只要有一份评阅意见是"小修改后答辩"，就需要写修改说明。
                         </div>
@@ -615,12 +893,12 @@
 
             <div class="card">
                 <div class="card-header">
-                    <div class="card-icon">📋</div>
+                    <div class="card-icon">&#x1F4CB;</div>
                     <div class="card-title">低于75分情况说明</div>
                 </div>
                 <div class="card-content">
                     <div class="alert alert-danger">
-                        <span class="alert-icon">⚠️</span>
+                        <span class="alert-icon">&#x26A0;&#xFE0F;</span>
                         <div>
                             <strong>适用范围：</strong>包括外审评阅书和导师评阅书，任一评分低于75分都需要提交。
                         </div>
@@ -632,43 +910,67 @@
                     </ul>
                 </div>
             </div>
+
+            <div class="card">
+                <div class="card-header">
+                    <div class="card-icon">&#x1F504;</div>
+                    <div class="card-title">复评流程</div>
+                </div>
+                <div class="card-content">
+                    <ul class="checklist">
+                        <li>评审结果为"大修"的，可申请复评</li>
+                        <li>需填写复评申请表，导师签字后提交学院</li>
+                        <li>还要提交新版论文，文件命名："姓名+学号+论文题目"</li>
+                        <li>复评不再查重和AIGC检测</li>
+                        <li>如果复评不通过，再间隔一批次才能申请毕业</li>
+                        <li>复评结果至少需要一周时间</li>
+                    </ul>
+                </div>
+            </div>
         </div>
 
         <!-- 答辩准备 -->
         <div class="section" id="defense">
             <div class="card">
                 <div class="card-header">
-                    <div class="card-icon">🎓</div>
+                    <div class="card-icon">&#x1F393;</div>
                     <div class="card-title">答辩申请流程</div>
                 </div>
                 <div class="card-content">
                     <div class="timeline">
                         <div class="timeline-item">
-                            <div class="timeline-date">Step 1</div>
+                            <div class="timeline-date">前置条件</div>
                             <div class="timeline-content">
-                                <strong>确认评阅结果</strong>
-                                <p>所有评阅意见返回且通过后，方可申请答辩</p>
+                                <strong>所有评阅通过</strong>
+                                <p>至少两位评阅专家和导师（共3人）的评语全部返回且通过</p>
                             </div>
                         </div>
                         <div class="timeline-item">
-                            <div class="timeline-date">Step 2</div>
+                            <div class="timeline-date">Step 1</div>
                             <div class="timeline-content">
                                 <strong>填写论文修改说明</strong>
                                 <p>有小修意见的同学需填写修改说明，导师签字（电子签即可）</p>
                             </div>
                         </div>
                         <div class="timeline-item">
-                            <div class="timeline-date">Step 3</div>
+                            <div class="timeline-date">Step 2</div>
                             <div class="timeline-content">
                                 <strong>上传修改说明到系统</strong>
                                 <p>在答辩模块的"论文修改"处上传</p>
                             </div>
                         </div>
                         <div class="timeline-item">
-                            <div class="timeline-date">Step 4</div>
+                            <div class="timeline-date">Step 3</div>
                             <div class="timeline-content">
                                 <strong>填写答辩申请信息</strong>
-                                <p>包括答辩时间、地点等，提交后等待导师审核</p>
+                                <p>师生商定答辩时间（具体到某日几点几分-几点几分）及地点（具体到教室/会议室/房间号）</p>
+                            </div>
+                        </div>
+                        <div class="timeline-item">
+                            <div class="timeline-date">Step 4</div>
+                            <div class="timeline-content">
+                                <strong>导师审核</strong>
+                                <p>提交后等待导师审核</p>
                             </div>
                         </div>
                         <div class="timeline-item">
@@ -684,7 +986,7 @@
 
             <div class="card">
                 <div class="card-header">
-                    <div class="card-icon">📄</div>
+                    <div class="card-icon">&#x1F4C4;</div>
                     <div class="card-title">学位申请书填写指南</div>
                 </div>
                 <div class="card-content">
@@ -731,9 +1033,9 @@
                     </table>
 
                     <div class="alert alert-success" style="margin-top: 16px;">
-                        <span class="alert-icon">💡</span>
+                        <span class="alert-icon">&#x1F4A1;</span>
                         <div>
-                            <strong>提示：</strong>学位申请书需<strong>双面打印</strong>，部分内容自动生成无法编辑。如信息未自动生成，说明之前填写的信息不全。
+                            <strong>提示：</strong>学位申请书需<strong>双面打印</strong>，部分内容自动生成无法编辑。如信息未自动生成，说明之前填写的信息不全。前置学位信息需在"个人信息"中把学历信息（特别是学士代码）填完整后重新导出。
                         </div>
                     </div>
                 </div>
@@ -741,7 +1043,7 @@
 
             <div class="card">
                 <div class="card-header">
-                    <div class="card-icon">📖</div>
+                    <div class="card-icon">&#x1F4D6;</div>
                     <div class="card-title">论文打印与装订</div>
                 </div>
                 <div class="card-content">
@@ -760,15 +1062,12 @@
                         <li>独创性声明页可用电子签（导师和本人电子签后PDF打印）</li>
                         <li>纸质版论文只需提交<strong>一份</strong></li>
                     </ul>
-
-                    <h4 style="margin-top: 20px;">打印价格参考：</h4>
-                    <p>黑白激光打印：<strong>0.15元/面</strong></p>
                 </div>
             </div>
 
             <div class="card">
                 <div class="card-header">
-                    <div class="card-icon">📝</div>
+                    <div class="card-icon">&#x1F4DD;</div>
                     <div class="card-title">大摘要要求</div>
                 </div>
                 <div class="card-content">
@@ -777,7 +1076,49 @@
                         <li>中英对照</li>
                         <li>模板可在学校网站下载</li>
                         <li><strong>不需要查重</strong></li>
+                        <li>需正式装订，将来存档</li>
+                        <li>以研究生院网站模板为准</li>
                     </ul>
+                </div>
+            </div>
+
+            <div class="card">
+                <div class="card-header">
+                    <div class="card-icon">&#x1F4CB;</div>
+                    <div class="card-title">评阅结果类型</div>
+                </div>
+                <div class="card-content">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>评阅结果</th>
+                                <th>分数区间</th>
+                                <th>后续操作</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td><span class="tag success">同意答辩</span></td>
+                                <td>85分以上</td>
+                                <td>无需提交修改说明</td>
+                            </tr>
+                            <tr>
+                                <td><span class="tag warning">小修改后答辩</span></td>
+                                <td>75-84分</td>
+                                <td>需提交修改说明</td>
+                            </tr>
+                            <tr>
+                                <td><span class="tag danger">大修改后答辩</span></td>
+                                <td>70-74分</td>
+                                <td>修改说明 + 低于75分情况说明</td>
+                            </tr>
+                            <tr>
+                                <td><span class="tag danger">复评</span></td>
+                                <td>-</td>
+                                <td>需额外一份评阅书，至少等待一周</td>
+                            </tr>
+                        </tbody>
+                    </table>
                 </div>
             </div>
         </div>
@@ -785,7 +1126,7 @@
         <!-- 学位申请 -->
         <div class="section" id="degree">
             <div class="alert alert-danger">
-                <span class="alert-icon">🔴</span>
+                <span class="alert-icon">&#x1F534;</span>
                 <div>
                     <strong>关键步骤：</strong>学位申请是最重要的一步，有关信息涉及证书真实性认证，请务必仔细核对！
                 </div>
@@ -793,7 +1134,7 @@
 
             <div class="card">
                 <div class="card-header">
-                    <div class="card-icon">🔄</div>
+                    <div class="card-icon">&#x1F504;</div>
                     <div class="card-title">学位申请流程</div>
                 </div>
                 <div class="card-content">
@@ -822,8 +1163,11 @@
                         <div class="timeline-item">
                             <div class="timeline-date">Step 3</div>
                             <div class="timeline-content">
-                                <strong>确认导师评语</strong>
-                                <p>"同意答辩"应为"是"</p>
+                                <strong>确认导师评语/答辩后论文修改</strong>
+                                <p>3个地方都是“是“</p>
+                                <p style="color: var(--danger-color);">答辩后论文修改页填完点保存（没有保存按钮换浏览器试，退出清浏览器缓存试）</p>
+                                <p style="margin-top: 12px;"><img src="https://image-ax1.pages.dev/kdzsk/学位申请信息1.png" alt="学位申请信息1" style="max-width: 100%; border: 1px solid var(--border-color); border-radius: 8px; margin-bottom: 10px;"></p>
+                                <p><img src="https://image-ax1.pages.dev/kdzsk/学位申请信息2.png" alt="学位申请信息2" style="max-width: 100%; border: 1px solid var(--border-color); border-radius: 8px;"></p>
                             </div>
                         </div>
                         <div class="timeline-item">
@@ -846,14 +1190,14 @@
 
             <div class="card">
                 <div class="card-header">
-                    <div class="card-icon">⚠️</div>
+                    <div class="card-icon">&#x26A0;&#xFE0F;</div>
                     <div class="card-title">常见问题与解决</div>
                 </div>
                 <div class="card-content">
                     <div class="faq-item">
                         <div class="faq-question">
                             <span>无法提交学位申请？</span>
-                            <span class="faq-arrow">▼</span>
+                            <span class="faq-arrow">&#x25BC;</span>
                         </div>
                         <div class="faq-answer">
                             <p>可能原因：</p>
@@ -869,7 +1213,7 @@
                     <div class="faq-item">
                         <div class="faq-question">
                             <span>答辩申请信息填错如何修改？</span>
-                            <span class="faq-arrow">▼</span>
+                            <span class="faq-arrow">&#x25BC;</span>
                         </div>
                         <div class="faq-answer">
                             <p>导师未审核：可直接删除重新填写</p>
@@ -879,7 +1223,7 @@
                     <div class="faq-item">
                         <div class="faq-question">
                             <span>论文题目需要修改？</span>
-                            <span class="faq-arrow">▼</span>
+                            <span class="faq-arrow">&#x25BC;</span>
                         </div>
                         <div class="faq-answer">
                             <p>在学位申请书和决议上有专门填写题目修改的栏目</p>
@@ -894,16 +1238,16 @@
         <div class="section" id="materials">
             <div class="card">
                 <div class="card-header">
-                    <div class="card-icon">📁</div>
+                    <div class="card-icon">&#x1F4C1;</div>
                     <div class="card-title">线下提交材料清单</div>
                 </div>
                 <div class="card-content">
                     <ul class="checklist">
-                        <li><strong>学位申请书</strong> - 填齐填全相关内容</li>
+                        <li><strong>学位申请书</strong> - 填齐填全相关内容，双面打印</li>
                         <li><strong>评阅书</strong> - 两位专家各一份 + 导师一份（共3份）</li>
                         <li class="optional"><strong>复评者额外评阅书</strong> - 复评同学需多一份（共4份）</li>
                         <li><strong>论文质量评价表</strong> - 总分、分项分齐全</li>
-                        <li class="optional"><strong>修改说明</strong> - 有小修意见的需提交，需导师签字（可电子签）</li>
+                        <li class="optional"><strong>修改说明</strong> - 有小修意见的需提交，需导师签字（可电子签），正反面一张A4纸</li>
                         <li class="optional"><strong>低于75分情况说明</strong> - 任一评分低于75分的需提交，学生和导师签字</li>
                         <li class="optional"><strong>AIGC检测说明</strong> - 全文超20%或部分超30%的需提交</li>
                         <li><strong>纸质论文一本</strong> - 最新版即可，需正式胶装</li>
@@ -911,9 +1255,9 @@
                     </ul>
 
                     <div class="alert alert-warning" style="margin-top: 16px;">
-                        <span class="alert-icon">📍</span>
+                        <span class="alert-icon">&#x1F4CD;</span>
                         <div>
-                            <strong>提交方式：</strong>上述材料由答辩秘书统一收齐后交到理化楼206（张老师）或316（苗老师）处
+                            <strong>提交方式：</strong>上述材料由答辩秘书统一收齐后交到理化楼206（张老师）或316（苗老师）处。材料不要寄给苗老师，可寄导师、同学等转交。
                         </div>
                     </div>
                 </div>
@@ -921,7 +1265,7 @@
 
             <div class="card">
                 <div class="card-header">
-                    <div class="card-icon">💻</div>
+                    <div class="card-icon">&#x1F4BB;</div>
                     <div class="card-title">线上提交内容清单</div>
                 </div>
                 <div class="card-content">
@@ -940,21 +1284,20 @@
 
             <div class="card">
                 <div class="card-header">
-                    <div class="card-icon">🤖</div>
-                    <div class="card-title">AIGC检测说明</div>
+                    <div class="card-icon">&#x1F4CB;</div>
+                    <div class="card-title">专业实践材料要求</div>
                 </div>
                 <div class="card-content">
                     <div class="alert alert-warning">
-                        <span class="alert-icon">⚠️</span>
-                        <div>
-                            <strong>提交条件：</strong>AIGC检测全文超20%或部分超30%的学位论文须提交说明
-                        </div>
+                        <span class="alert-icon">&#x26A0;&#xFE0F;</span>
+                        <div><strong>上传位置：</strong>必须上传到"专业实践信息登记"，不要上传到带"（专业学位）"后缀的位置！</div>
                     </div>
                     <ul class="checklist">
-                        <li>需简要分析超标的原因并说明</li>
-                        <li>答辩时请导师签字后提交（可电子签）</li>
-                        <li>延期的、评阅未过的、答辩未过的可不交</li>
-                        <li>之前已交过的不用再交</li>
+                        <li><strong>专业实践考核登记表</strong> - 需签字盖章，5000字内容，上传PDF格式</li>
+                        <li><strong>专业实践计划表</strong> - 2024级之后需上传，2023级之前不用</li>
+                        <li>上传后苗老师审核，审核通过后才有学分</li>
+                        <li>传错位置的需撤回重新上传</li>
+                        <li>纸质版交班长或学委统一收齐交给苗老师（包括中期报告纸质版）</li>
                     </ul>
                 </div>
             </div>
@@ -964,25 +1307,72 @@
         <div class="section" id="faq">
             <div class="card">
                 <div class="card-header">
-                    <div class="card-icon">❓</div>
+                    <div class="card-icon">&#x2753;</div>
+                    <div class="card-title">预答辩相关</div>
+                </div>
+                <div class="card-content">
+                    <div class="faq-item">
+                        <div class="faq-question">
+                            <span>之前预答辩已通过，还需要参加吗？</span>
+                            <span class="faq-arrow">&#x25BC;</span>
+                        </div>
+                        <div class="faq-answer">
+                            <p>不需要。往届预答辩已通过的，本季不用再参加预答辩。</p>
+                        </div>
+                    </div>
+                    <div class="faq-item">
+                        <div class="faq-question">
+                            <span>中期答辩后修改了论文题目，需要提交什么材料吗？</span>
+                            <span class="faq-arrow">&#x25BC;</span>
+                        </div>
+                        <div class="faq-answer">
+                            <p>如果论文主要内容没有改变：不用提交材料，预答辩之后用新的即可。</p>
+                            <p>如果论文主要内容有改变：需按导师要求修改。</p>
+                        </div>
+                    </div>
+                    <div class="faq-item">
+                        <div class="faq-question">
+                            <span>论文题目和开题时不一致，有影响吗？</span>
+                            <span class="faq-arrow">&#x25BC;</span>
+                        </div>
+                        <div class="faq-answer">
+                            <p>没有任何影响。后面的环节以最新版为准，最后还有存档论文上传的环节，那里填对就行。</p>
+                        </div>
+                    </div>
+                    <div class="faq-item">
+                        <div class="faq-question">
+                            <span>预答辩PPT有统一模板吗？</span>
+                            <span class="faq-arrow">&#x25BC;</span>
+                        </div>
+                        <div class="faq-answer">
+                            <p>没有统一模板。</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="card">
+                <div class="card-header">
+                    <div class="card-icon">&#x2753;</div>
                     <div class="card-title">评阅相关</div>
                 </div>
                 <div class="card-content">
                     <div class="faq-item">
                         <div class="faq-question">
                             <span>评审结果一直没出怎么办？</span>
-                            <span class="faq-arrow">▼</span>
+                            <span class="faq-arrow">&#x25BC;</span>
                         </div>
                         <div class="faq-answer">
                             <p>1. 可以问问导师送了没有，或许导师没送，或许送了对方还没评</p>
                             <p>2. 评审结果有截止日期，请参照文件通知</p>
                             <p>3. 复评结果至少需要一周时间</p>
+                            <p>4. 多数人评语未回是正常的，不要急，可以先完善论文准备答辩</p>
                         </div>
                     </div>
                     <div class="faq-item">
                         <div class="faq-question">
                             <span>专家评审意见没有签名怎么办？</span>
-                            <span class="faq-arrow">▼</span>
+                            <span class="faq-arrow">&#x25BC;</span>
                         </div>
                         <div class="faq-answer">
                             <p>外审专家评阅意见不需要签名，只有导师评阅意见需要导师签字。</p>
@@ -991,56 +1381,82 @@
                     <div class="faq-item">
                         <div class="faq-question">
                             <span>评阅书上学号有误有影响吗？</span>
-                            <span class="faq-arrow">▼</span>
+                            <span class="faq-arrow">&#x25BC;</span>
                         </div>
                         <div class="faq-answer">
                             <p>没有影响，系统生成的PDF文档中学号可能存在显示问题，不影响评审结果。</p>
                         </div>
                     </div>
+                    <div class="faq-item">
+                        <div class="faq-question">
+                            <span>外审过了还能再改题目吗？</span>
+                            <span class="faq-arrow">&#x25BC;</span>
+                        </div>
+                        <div class="faq-answer">
+                            <p>可以改。但系统中评审申请里的论文题目也要改成和新的完全一样。改的话需要学院和导师撤销审核。</p>
+                        </div>
+                    </div>
                 </div>
             </div>
 
             <div class="card">
                 <div class="card-header">
-                    <div class="card-icon">❓</div>
-                    <div class="card-title">答辩相关</div>
+                    <div class="card-icon">&#x2753;</div>
+                    <div class="card-title">查重与检测相关</div>
                 </div>
                 <div class="card-content">
                     <div class="faq-item">
                         <div class="faq-question">
-                            <span>答辩申请时间和地点填错了怎么办？</span>
-                            <span class="faq-arrow">▼</span>
+                            <span>查重率多少算合格？</span>
+                            <span class="faq-arrow">&#x25BC;</span>
                         </div>
                         <div class="faq-answer">
-                            <p>导师未审核：可直接删除重新填写</p>
-                            <p>导师已审核：需导师撤销审核后修改，或联系秘书修改</p>
+                            <p>全文及各部分（章节）文字复制比不大于15%。</p>
                         </div>
                     </div>
                     <div class="faq-item">
                         <div class="faq-question">
-                            <span>论文选题来源、开题年月填错了有影响吗？</span>
-                            <span class="faq-arrow">▼</span>
+                            <span>大摘要需要查重吗？</span>
+                            <span class="faq-arrow">&#x25BC;</span>
                         </div>
                         <div class="faq-answer">
-                            <p>没什么影响，最后以提交存档版为准。后面还有个存档论文上传的环节，那里的信息填对就行。</p>
+                            <p>不需要查重。</p>
                         </div>
                     </div>
                     <div class="faq-item">
                         <div class="faq-question">
-                            <span>需要建立临时答辩群吗？</span>
-                            <span class="faq-arrow">▼</span>
+                            <span>学校查重和查AI率用什么工具？</span>
+                            <span class="faq-arrow">&#x25BC;</span>
                         </div>
                         <div class="faq-answer">
-                            <p>是的，请大家配合所在组答辩秘书建临时答辩群，便于通知和收发答辩材料。具体等导师或秘书通知。</p>
+                            <p>查重用知网。AIGC检测工具不确定，是研究生系统自动关联的。学校查重时可以看出之前是否在知网查过（目前无影响）。</p>
                         </div>
                     </div>
                     <div class="faq-item">
                         <div class="faq-question">
-                            <span>最终版论文封面在哪里获取可编辑版本？</span>
-                            <span class="faq-arrow">▼</span>
+                            <span>自费查重合格证明学校认吗？</span>
+                            <span class="faq-arrow">&#x25BC;</span>
                         </div>
                         <div class="faq-answer">
-                            <p>校园网上有模板下载。也可以直接联系打印店，老板那边有封面模板，可以帮忙处理好。</p>
+                            <p>不认。</p>
+                        </div>
+                    </div>
+                    <div class="faq-item">
+                        <div class="faq-question">
+                            <span>AIGC检测什么标准算合格？</span>
+                            <span class="faq-arrow">&#x25BC;</span>
+                        </div>
+                        <div class="faq-answer">
+                            <p>目前没有硬性规定，决定权在导师。AIGC检测全文超20%或部分超30%需要提交说明。</p>
+                        </div>
+                    </div>
+                    <div class="faq-item">
+                        <div class="faq-question">
+                            <span>查重通过了，还能修改论文后再送审吗？</span>
+                            <span class="faq-arrow">&#x25BC;</span>
+                        </div>
+                        <div class="faq-answer">
+                            <p>不能。查重通过的论文被系统锁定送审，再改的论文只能用于后续答辩环节。</p>
                         </div>
                     </div>
                 </div>
@@ -1048,23 +1464,39 @@
 
             <div class="card">
                 <div class="card-header">
-                    <div class="card-icon">❓</div>
+                    <div class="card-icon">&#x2753;</div>
                     <div class="card-title">系统操作相关</div>
                 </div>
                 <div class="card-content">
                     <div class="faq-item">
                         <div class="faq-question">
-                            <span>答辩申请状态"修改中"如何改成"已完成"？</span>
-                            <span class="faq-arrow">▼</span>
+                            <span>无法申请毕业报名？</span>
+                            <span class="faq-arrow">&#x25BC;</span>
                         </div>
                         <div class="faq-answer">
-                            <p>提交状态下拉选择即可修改，系统接受处理的状态为"已完成"。</p>
+                            <p>一般都是培养计划没完成或有问题的原因。</p>
+                            <ul>
+                                <li>检查成绩、学分是否达标</li>
+                                <li>检查专业实践信息是否上传且审核通过</li>
+                                <li>检查开题报告是否上传且导师审核</li>
+                                <li>尝试换浏览器（360浏览器需用兼容模式）</li>
+                                <li>培养计划问题找赵老师</li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="faq-item">
+                        <div class="faq-question">
+                            <span>评审申请导师审核后还能修改论文吗？</span>
+                            <span class="faq-arrow">&#x25BC;</span>
+                        </div>
+                        <div class="faq-answer">
+                            <p>评审申请导师审核了没问题。如果提交查重论文导师未审，可以替换。如果导师审核了，需撤回才能换。</p>
                         </div>
                     </div>
                     <div class="faq-item">
                         <div class="faq-question">
                             <span>前置学位信息没带出来怎么办？</span>
-                            <span class="faq-arrow">▼</span>
+                            <span class="faq-arrow">&#x25BC;</span>
                         </div>
                         <div class="faq-answer">
                             <p>在系统"个人信息"中把学历信息填完整，特别是学士的代码填上，然后重新导出。</p>
@@ -1073,37 +1505,28 @@
                     <div class="faq-item">
                         <div class="faq-question">
                             <span>委培定向单位显示空白？</span>
-                            <span class="faq-arrow">▼</span>
+                            <span class="faq-arrow">&#x25BC;</span>
                         </div>
                         <div class="faq-answer">
                             <p>在系统中的"个人资料"处修改补充信息，然后重新导出学位申请书即可。</p>
                         </div>
                     </div>
-                </div>
-            </div>
-
-            <div class="card">
-                <div class="card-header">
-                    <div class="card-icon">❓</div>
-                    <div class="card-title">查重与检测相关</div>
-                </div>
-                <div class="card-content">
                     <div class="faq-item">
                         <div class="faq-question">
-                            <span>上传毕业论文前最后一次查重包含AIGC检测吗？</span>
-                            <span class="faq-arrow">▼</span>
+                            <span>校外导师信息需要修改怎么办？</span>
+                            <span class="faq-arrow">&#x25BC;</span>
                         </div>
                         <div class="faq-answer">
-                            <p>不用AIGC检测。</p>
+                            <p>要通过赵老师找研究生院系统管理员后台修改，比较麻烦。如果更换了校外导师，线上线下所有材料都要改一致，特别是签字。</p>
                         </div>
                     </div>
                     <div class="faq-item">
                         <div class="faq-question">
-                            <span>大摘要需要查重吗？</span>
-                            <span class="faq-arrow">▼</span>
+                            <span>延期的同学如何操作？</span>
+                            <span class="faq-arrow">&#x25BC;</span>
                         </div>
                         <div class="faq-answer">
-                            <p>不需要查重。</p>
+                            <p>在系统中申请延期（导师审核），下次预答辩预计在暑假之后。延期的同学本季不需要再申请毕业。</p>
                         </div>
                     </div>
                 </div>
@@ -1114,14 +1537,14 @@
         <div class="section" id="resources">
             <div class="card">
                 <div class="card-header">
-                    <div class="card-icon">📥</div>
+                    <div class="card-icon">&#x1F4E5;</div>
                     <div class="card-title">模板与文档</div>
                 </div>
                 <div class="card-content">
                     <div class="alert alert-info">
-                        <span class="alert-icon">📌</span>
+                        <span class="alert-icon">&#x1F4CC;</span>
                         <div>
-                            以下模板可在<strong>学校校园网</strong>下载，部分由老师在微信群发布
+                            以下模板可在<strong>学校校园网</strong>（研究生院网站 yjs.cumtb.edu.cn）下载，部分由老师在微信群发布
                         </div>
                     </div>
 
@@ -1135,14 +1558,9 @@
                         </thead>
                         <tbody>
                             <tr>
-                                <td>硕士专业学位论文模板</td>
+                                <td>硕士专业学位论文、摘要、胶装封皮模板</td>
                                 <td>论文撰写格式模板</td>
-                                <td>校园网</td>
-                            </tr>
-                            <tr>
-                                <td>硕士专业学位论文摘要模板</td>
-                                <td>大摘要格式模板</td>
-                                <td>校园网</td>
+                                <td><a href="https://yjs.cumtb.edu.cn/info/1030/1641.htm" target="_blank">校园网</a></td>
                             </tr>
                             <tr>
                                 <td>2026夏专业硕士毕业答辩须知</td>
@@ -1159,6 +1577,26 @@
                                 <td>AIGC超标情况说明参考</td>
                                 <td>微信群</td>
                             </tr>
+                            <tr>
+                                <td>评审申请填写细节</td>
+                                <td>评审申请各字段填写说明</td>
+                                <td>微信群</td>
+                            </tr>
+                            <tr>
+                                <td>关于AIGC检测工作的通知</td>
+                                <td>AIGC检测相关文件</td>
+                                <td>微信群</td>
+                            </tr>
+                            <tr>
+                                <td>研究生学位论文复评申请表</td>
+                                <td>复评申请用表</td>
+                                <td>微信群</td>
+                            </tr>
+                            <tr>
+                                <td>硕士学位论文修改说明模板</td>
+                                <td>修改说明参考格式</td>
+                                <td>微信群</td>
+                            </tr>
                         </tbody>
                     </table>
                 </div>
@@ -1166,24 +1604,32 @@
 
             <div class="card">
                 <div class="card-header">
-                    <div class="card-icon">🔗</div>
+                    <div class="card-icon">&#x1F517;</div>
                     <div class="card-title">实用链接</div>
                 </div>
                 <div class="card-content">
                     <a href="http://www.ztflh.com/" target="_blank" class="resource-link">
-                        <span>📚</span>
+                        <span>&#x1F4DA;</span>
                         <span>中图分类号查询（国内分类号）</span>
                     </a>
                     <a href="http://www.udcsummary.info/php/index.php?lang=chi&pr=Y" target="_blank" class="resource-link">
-                        <span>🌐</span>
+                        <span>&#x1F310;</span>
                         <span>UDC分类号查询（国际分类号）</span>
+                    </a>
+                    <a href="https://yjs.cumtb.edu.cn/info/1025/4713.htm" target="_blank" class="resource-link">
+                        <span>&#x1F4DD;</span>
+                        <span>研究生院关于2026年夏季申请学位工作的通知（含查重、格式检测要求）</span>
+                    </a>
+                    <a href="https://yjs.cumtb.edu.cn/info/1017/2947.htm" target="_blank" class="resource-link">
+                        <span>&#x1F4D6;</span>
+                        <span>研究生手册相关规定</span>
                     </a>
                 </div>
             </div>
 
             <div class="card">
                 <div class="card-header">
-                    <div class="card-icon">📞</div>
+                    <div class="card-icon">&#x1F4DE;</div>
                     <div class="card-title">联系方式</div>
                 </div>
                 <div class="card-content">
@@ -1198,6 +1644,11 @@
                                 <td><strong>理化楼316</strong></td>
                                 <td>苗老师</td>
                                 <td>答辩材料提交</td>
+                            </tr>
+                            <tr>
+                                <td><strong>赵老师</strong></td>
+                                <td>培养计划、成绩学分问题</td>
+                                <td>教学环节相关</td>
                             </tr>
                         </tbody>
                     </table>
@@ -1233,9 +1684,15 @@
         const searchBox = document.getElementById('searchBox');
         searchBox.addEventListener('input', (e) => {
             const query = e.target.value.toLowerCase();
-            if (query.length < 2) return;
+            if (query.length < 2) {
+                // Reset all cards visibility
+                document.querySelectorAll('.card').forEach(card => {
+                    card.style.display = '';
+                });
+                return;
+            }
 
-            // Search in all cards and highlight
+            // Search in all cards
             document.querySelectorAll('.card').forEach(card => {
                 const text = card.textContent.toLowerCase();
                 if (text.includes(query)) {
@@ -1248,6 +1705,8 @@
                         section.classList.add('active');
                         document.querySelector(`[data-tab="${section.id}"]`).classList.add('active');
                     }
+                } else {
+                    card.style.display = 'none';
                 }
             });
         });
@@ -1256,6 +1715,9 @@
         searchBox.addEventListener('keydown', (e) => {
             if (e.key === 'Escape') {
                 searchBox.value = '';
+                document.querySelectorAll('.card').forEach(card => {
+                    card.style.display = '';
+                });
             }
         });
     </script>
